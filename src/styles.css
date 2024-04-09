@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  color: rgb(26, 26, 26);
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0px;
+  margin: 100px 0 24px 0;
+}
+label {
+  color: rgb(51, 51, 51);
+  font-family: Abel;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.3px;
+  margin: 5px 0 5px 16px;
+}
+p{
+  color: #007AFF;
+  font-family: Abel;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  text-align: right;
+  margin-top: 20px;
+}
+sup{
+  color: red;
+  margin: 5px 0 5px 16px;
+}
+input {
+  width: 360px;
+  height: 48px;
+  padding: 8px 8px 8px 16px;
+  border: 0.5px solid rgb(229, 229, 229);
+  border-radius: 6px;
+  background: rgb(242, 242, 242);
+
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  box-sizing: border-box;
+  outline: none;
+}
+.listerrors{
+  margin: 5px 0 5px 0;
+}

@@ -1,0 +1,25 @@
+<div class="reset">
+  <h1>Reset access</h1>
+  <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+    <label>Login</label>
+    <input type="text" placeholder="Email" formControlName="login" />
+    <div
+      *ngIf="resetForm.get('login')?.errors && resetForm.get('login')?.touched"
+      class="listerrors"
+    >
+      <sup *ngIf="resetForm.get('login')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="resetForm.get('login')?.errors?.pattern">
+        Поле несоответствует формату почты
+      </sup>
+    </div>
+    <custom-button
+      type="in"
+      reverse="reset"
+      buttonType="submit"
+    ></custom-button>
+    <div class="line"></div>
+    <custom-button type="up" reverse="true" [routerLink]="'/'"></custom-button>
+  </form>
+</div>

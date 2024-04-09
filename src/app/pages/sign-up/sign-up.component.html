@@ -1,0 +1,46 @@
+<div class="sign-up">
+  <h1>Now create your account</h1>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <label>Login</label>
+    <input type="text" placeholder="Email" formControlName="login" />
+    <div *ngIf="signUpForm.get('login')?.errors && signUpForm.get('login')?.touched" class="listerrors">
+      <sup *ngIf="signUpForm.get('login')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signUpForm.get('login')?.errors?.pattern">
+        Поле несоответствует формату почты
+      </sup>
+    </div>
+    <label>Password</label>
+    <input type="text" placeholder="Enter password" formControlName="password" />
+    <div *ngIf="((signUpForm?.errors || signUpForm.get('password')?.errors) && signUpForm.get('password')?.touched)" class="listerrors">
+      <sup *ngIf="signUpForm.get('password')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signUpForm.get('password')?.errors?.pattern">
+        Поле должно содержить минимум 8 символов,<br>
+        <span style="margin-left: 15px;">1 цифру и 1 заглавный символ</span>
+      </sup>
+      <sup *ngIf="signUpForm?.errors?.isPasswordsSim && !signUpForm.get('password')?.errors?.required && !signUpForm.get('password')?.errors?.pattern">
+        Пароли должны совпадать
+      </sup>
+    </div>
+    <label>Type password again</label>
+    <input type="text" placeholder="Enter password" formControlName="confirmPassword" />
+    <div *ngIf="((signUpForm?.errors || signUpForm.get('confirmPassword')?.errors) && signUpForm.get('confirmPassword')?.touched)" class="listerrors">
+      <sup *ngIf="signUpForm.get('confirmPassword')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signUpForm.get('confirmPassword')?.errors?.pattern">
+        Поле должно содержить минимум 8 символов,<br>
+        <span style="margin-left: 15px;">1 цифру и 1 заглавный символ</span>
+      </sup>
+      <sup *ngIf="signUpForm?.errors?.isPasswordsSim && !signUpForm.get('confirmPassword')?.errors?.required && !signUpForm.get('confirmPassword')?.errors?.pattern">
+        Пароли должны совпадать
+      </sup>
+    </div>
+    <custom-button type="in" reverse="true" buttonType="submit"></custom-button>
+    <div class="line"></div>
+    <custom-button type="up" reverse="true" [routerLink]="'/'"></custom-button>
+  </form>
+</div>

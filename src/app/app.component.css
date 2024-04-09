@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+}
+.forms{
+    width: 35vw;
+}
+img{
+    width: 65vw;
+    height: 100vh;
+}

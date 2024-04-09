@@ -1,0 +1,37 @@
+<div class="sign-in">
+  <h1>Nice to see you again</h1>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <label>Login</label>
+    <input type="text" placeholder="Email" formControlName="login" />
+    <div *ngIf="signInForm.get('login')?.errors && signInForm.get('login')?.touched" class="listerrors">
+      <sup *ngIf="signInForm.get('login')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signInForm.get('login')?.errors?.pattern">
+        Поле несоответствует формату почты
+      </sup>
+    </div>
+    <label>Password</label>
+    <input
+      type="text"
+      placeholder="Enter password"
+      formControlName="password"
+    />
+    <div *ngIf="signInForm.get('password')?.errors && signInForm.get('password')?.touched" class="listerrors">
+      <sup *ngIf="signInForm.get('password')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signInForm.get('password')?.errors?.pattern">
+        Поле должно содержить минимум 8 символов,<br>
+        <span style="margin-left: 15px;">1 цифру и 1 заглавный символ</span>
+      </sup>
+    </div>
+    <p [routerLink]="'/reset'">Forgot password?</p>
+    <custom-button type="in" buttonType="submit"></custom-button>
+    <div class="line"></div>
+    <div class="sign-in-text">
+      <p class="intext">Dont have an account?</p>
+      <custom-button type="up" [routerLink]="'/sign-up'"></custom-button>
+    </div>
+  </form>
+</div>

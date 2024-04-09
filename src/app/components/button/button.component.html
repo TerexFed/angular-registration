@@ -1,0 +1,11 @@
+@if (reverse === 'reset') {
+<button [type]="buttonType" [className]="'in'">Reset</button>
+} @else { @if (reverse === 'true') {
+<button [type]="buttonType" [className]="(type === 'in' && 'in') || (type === 'up' && 'up')">
+  Sign {{ (type === "up" && "in") || (type === "in" && "up") }}
+</button>
+} @else {
+<button [type]="buttonType" [className]="(type === 'up' && 'up') || (type === 'in' && 'in')">
+  Sign {{ (type === "up" && "up now") || (type === "in" && "in") }}
+</button>
+} }
