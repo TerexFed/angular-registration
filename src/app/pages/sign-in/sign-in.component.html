@@ -2,12 +2,12 @@
   <h1>Nice to see you again</h1>
   <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <label>Login</label>
-    <input type="text" placeholder="Email" formControlName="login" />
-    <div *ngIf="signInForm.get('login')?.errors && signInForm.get('login')?.touched" class="listerrors">
-      <sup *ngIf="signInForm.get('login')?.errors?.required">
+    <input type="text" placeholder="Email" formControlName="username" />
+    <div *ngIf="signInForm.get('username')?.errors && signInForm.get('username')?.touched" class="listerrors">
+      <sup *ngIf="signInForm.get('username')?.errors?.required">
         Поле обязательно для заполнения
       </sup>
-      <sup *ngIf="signInForm.get('login')?.errors?.pattern">
+      <sup *ngIf="signInForm.get('username')?.errors?.pattern">
         Поле несоответствует формату почты
       </sup>
     </div>

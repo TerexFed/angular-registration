@@ -1,13 +1,20 @@
 <div class="sign-up">
   <h1>Now create your account</h1>
   <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <label>Login</label>
-    <input type="text" placeholder="Email" formControlName="login" />
-    <div *ngIf="signUpForm.get('login')?.errors && signUpForm.get('login')?.touched" class="listerrors">
-      <sup *ngIf="signUpForm.get('login')?.errors?.required">
+    <label>Username</label>
+    <input type="text" placeholder="Username" formControlName="username" />
+    <div *ngIf="signUpForm.get('username')?.errors && signUpForm.get('username')?.touched" class="listerrors">
+      <sup *ngIf="signUpForm.get('username')?.errors?.required">
         Поле обязательно для заполнения
       </sup>
-      <sup *ngIf="signUpForm.get('login')?.errors?.pattern">
+    </div>
+    <label>Email</label>
+    <input type="text" placeholder="Email" formControlName="email" />
+    <div *ngIf="signUpForm.get('email')?.errors && signUpForm.get('email')?.touched" class="listerrors">
+      <sup *ngIf="signUpForm.get('email')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+      <sup *ngIf="signUpForm.get('email')?.errors?.pattern">
         Поле несоответствует формату почты
       </sup>
     </div>
@@ -37,6 +44,20 @@
       </sup>
       <sup *ngIf="signUpForm?.errors?.isPasswordsSim && !signUpForm.get('confirmPassword')?.errors?.required && !signUpForm.get('confirmPassword')?.errors?.pattern">
         Пароли должны совпадать
+      </sup>
+    </div>
+    <label>First name</label>
+    <input type="text" placeholder="First name" formControlName="first_name" />
+    <div *ngIf="((signUpForm?.errors || signUpForm.get('first_name')?.errors) && signUpForm.get('first_name')?.touched)" class="listerrors">
+      <sup *ngIf="signUpForm.get('first_name')?.errors?.required">
+        Поле обязательно для заполнения
+      </sup>
+    </div>
+    <label>Last name</label>
+    <input type="text" placeholder="Last name" formControlName="last_name" />
+    <div *ngIf="((signUpForm?.errors || signUpForm.get('last_name')?.errors) && signUpForm.get('last_name')?.touched)" class="listerrors">
+      <sup *ngIf="signUpForm.get('last_name')?.errors?.required">
+        Поле обязательно для заполнения
       </sup>
     </div>
     <custom-button type="in" reverse="true" buttonType="submit"></custom-button>

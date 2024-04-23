@@ -3,6 +3,7 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,18 +14,24 @@ import { NgIf } from '@angular/common';
 })
 export class SignUpComponent {
   public signUpForm: FormGroup = new FormGroup({
-    login: new FormControl(''),
+    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    confirmPassword: new FormControl(''),
+    first_name: new FormControl(''),
+    last_name: new FormControl('')
   })
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private AuthService: AuthService) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      login: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{8,}$')]],
-      confirmPassword: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{8,}$')]]
+      confirmPassword: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\d).{8,}$')]],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]]
     }, {
       validator: this.matchPassword
     })
@@ -38,8 +45,16 @@ export class SignUpComponent {
 
   public onSubmit() {
     if (this.signUpForm.valid) {
-      alert('Вы зарегистрировались!')
-      location.reload();
+      this.AuthService.register(this.signUpForm.value)
+        .subscribe({
+          next: () => {
+            this.AuthService.setAuth = true
+          },
+          error: (e) => {
+            console.log(e)
+            this.AuthService.setAuth = false
+          }
+        })
     }
   }
 }
